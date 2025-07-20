@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>合約模擬 | Solidity 智能合約學習模擬器</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Solidity 智能合約學習模擬器</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">首頁 / Home</a></li>
+        <li><a href="合約模擬.html" class="active">合約模擬 / Simulator</a></li>
+        <li><a href="學習資源.html">學習資源 / Resources</a></li>
+        <li><a href="測試網連接.html">測試網連接 / Testnet</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="editor-log-container">
+      <div class="contract-editor">
+        <div class="label-title">合約編輯器 / Contract Editor</div>
+        <textarea id="contractEditor">// pragma solidity ^0.8.0;
+
+// contract HelloWorld {
+//     string public message = "Hello, Blockchain!";
+
+//     function setMessage(string memory newMsg) public {
+//         message = newMsg;
+//     }
+// }</textarea>
+      </div>
+
+      <div class="execution-log">
+        <div class="label-title">執行日誌 / Log</div>
+        <div id="logBox">[尚未執行任何操作]</div>
+      </div>
+    </div>
+
+    <div class="input-controls" style="text-align:center; margin-top: 20px;">
+      <input type="text" id="inputMessage" placeholder="輸入訊息 / Enter message" />
+    </div>
+
+    <div class="button-group" style="text-align:center; margin-top: 10px;">
+      <button onclick="startTutorial()">📘 開始教學 / Tutorial</button>
+      <button onclick="showNextStep()">➡️ 下一步 / Next</button>
+      <button onclick="compileContract()">🔍 編譯合約 / Compile</button>
+      <button onclick="deployContract()">🚀 部署合約 / Deploy</button>
+      <button onclick="callSetFunction()">📝 呼叫 setMessage()</button>
+      <button onclick="explainValidation()" id="validation-explain-btn">📘 區塊鏈驗證詳解</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>由 <strong>徐文志</strong> 製作 © 2025 | Solidity Simulator</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

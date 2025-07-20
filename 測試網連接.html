@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>測試網連接 | Solidity 智能合約模擬器</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Solidity 智能合約模擬器</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">首頁 / Home</a></li>
+        <li><a href="合約模擬.html">合約模擬 / Simulator</a></li>
+        <li><a href="學習資源.html">學習資源 / Resources</a></li>
+        <li><a href="測試網連接.html" class="active">測試網連接 / Testnet</a></li>
+      </ul>
+    </nav>
+
+  </header>
+
+  <main>
+    <h2 id="page-title">🔗 測試網連接</h2>
+
+    <section>
+      <div class="label-title" id="connect-title">如何連接以太坊測試網</div>
+      <p id="connect-step1">1️⃣ 安裝 MetaMask 瀏覽器外掛。</p>
+      <p id="connect-step2">2️⃣ 切換至 Goerli 或 Sepolia 測試網。</p>
+      <p id="connect-step3">3️⃣ 使用水龍頭網站取得測試幣。</p>
+      <p id="connect-step4">4️⃣ 使用 Remix IDE 或 DApp 發送交易至測試網。</p>
+    </section>
+
+    <section style="margin-top: 30px;">
+      <div class="label-title" id="tools-title">推薦工具</div>
+      <ul id="tools-list">
+        <li>🔧 <a href="https://remix.ethereum.org" target="_blank">Remix IDE</a></li>
+        <li>🧪 <a href="https://faucet.quicknode.com/" target="_blank">Goerli 水龍頭</a></li>
+        <li>🔍 <a href="https://sepolia.etherscan.io/" target="_blank">Sepolia Etherscan</a></li>
+        <li>💼 <a href="https://metamask.io" target="_blank">MetaMask 官方網站</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 徐文志 | Solidity 智能合約模擬器</p>
+  </footer>
+
+  <script>
+    let currentLang = 'zh';
+
+    function switchLanguage(lang) {
+      currentLang = lang;
+      const zh = {
+        title: "🔗 測試網連接",
+        step1: "1️⃣ 安裝 MetaMask 瀏覽器外掛。",
+        step2: "2️⃣ 切換至 Goerli 或 Sepolia 測試網。",
+        step3: "3️⃣ 使用水龍頭網站取得測試幣。",
+        step4: "4️⃣ 使用 Remix IDE 或 DApp 發送交易至測試網。",
+        tools: "推薦工具"
+      };
+      const en = {
+        title: "🔗 Testnet Connection",
+        step1: "1️⃣ Install MetaMask browser extension.",
+        step2: "2️⃣ Switch to Goerli or Sepolia Testnet.",
+        step3: "3️⃣ Use faucet site to obtain test Ether.",
+        step4: "4️⃣ Use Remix IDE or DApp to send transactions.",
+        tools: "Recommended Tools"
+      };
+      const t = lang === 'zh' ? zh : en;
+
+      document.getElementById("page-title").innerText = t.title;
+      document.getElementById("connect-title").innerText = t.title;
+      document.getElementById("connect-step1").innerText = t.step1;
+      document.getElementById("connect-step2").innerText = t.step2;
+      document.getElementById("connect-step3").innerText = t.step3;
+      document.getElementById("connect-step4").innerText = t.step4;
+      document.getElementById("tools-title").innerText = t.tools;
+    }
+
+    window.onload = () => {
+      switchLanguage(currentLang);
+    };
+  </script>
+</body>
+</html>

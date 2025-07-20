@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>學習資源 | Solidity 智能合約模擬器</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header>
+    <h1>Solidity 智能合約學習模擬器</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">首頁 / Home</a></li>
+        <li><a href="合約模擬.html" class="active">合約模擬 / Simulator</a></li>
+        <li><a href="學習資源.html">學習資源 / Resources</a></li>
+        <li><a href="測試網連接.html">測試網連接 / Testnet</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <main>
+    <h2 id="resource-title">📚 語法教學區</h2>
+
+    <input type="text" id="searchInput" placeholder="🔍 搜尋語法關鍵字..." onkeyup="searchKeyword()" />
+
+    <div class="syntax-section">
+      <details open>
+        <summary id="basic-syntax-title"> 初階語法 / Beginner Syntax</summary>
+        <ul id="basic-syntax-list">
+          <li><code>pragma solidity ^0.8.0;</code> - 指定編譯器版本 / Specify compiler version</li>
+          <li><code>contract HelloWorld { ... }</code> - 宣告合約 / Declare a contract</li>
+          <li><code>string public message;</code> - 公開變數 / Public variable</li>
+          <li><code>constructor() { ... }</code> - 建構子，部署時執行 / Constructor, runs on deployment</li>
+          <li><code>function get() public view returns (...) { ... }</code> - 閱讀函式 / Read-only function</li>
+          <li><code>function set(...) public { ... }</code> - 寫入函式 / Write/update function</li>
+          <li><code>address public owner;</code> - 地址型別 / Address type</li>
+          <li><code>msg.sender</code> - 傳送者地址 / Sender's address</li>
+          <li><code>uint public count = 0;</code> - 無號整數 / Unsigned integer</li>
+          <li><code>bool public isActive = true;</code> - 布林值 / Boolean value</li>
+          <li><code>enum Status { Active, Inactive }</code> - 列舉型別 / Enumeration type</li>
+          <li><code>struct User { address addr; uint age; }</code> - 結構型別 / Struct type</li>
+          <li><code>User[] public users;</code> - 結構陣列 / Array of structs</li>
+          <li><code>if (x &gt; 5) { ... } else { ... }</code> - 條件判斷 / If-else logic</li>
+          <li><code>for (uint i = 0; i &lt; 5; i++) { ... }</code> - 迴圈控制 / Looping</li>
+          <li><code>require(x &gt; 0, "Must be greater than 0");</code> - 條件驗證 / Requirement check</li>
+          <li><code>revert("Something went wrong");</code> - 強制錯誤回滾 / Manual error revert</li>
+          <li><code>assert(x == 1);</code> - 內部邏輯驗證 / Assert internal state</li>
+          <li><code>uint public constant FEE = 100;</code> - 常數宣告 / Declaring a constant</li>
+          <li><code>address immutable creator;</code> - 部署後不可變變數 / Immutable variable after deploy</li>
+          <li><code>function deposit() public payable { ... }</code> - 可接收 ETH 的函式 / ETH-receiving function</li>
+        </ul>
+      </details>
+
+      <details open>
+        <summary id="intermediate-syntax-title">🚧 中階語法 / Intermediate Syntax</summary>
+        <ul id="intermediate-syntax-list">
+          <li><code>mapping(address => uint) public balances;</code> - 錢包地址映射 / Mapping from address to uint</li>
+          <li><code>modifier onlyOwner { ... _; }</code> - 函式修飾器 / Function modifier</li>
+          <li><code>require(msg.sender == owner, "Not owner");</code> - 權限檢查 / Permission check</li>
+          <li><code>event Transferred(address from, address to, uint amount);</code> - 事件宣告 / Declare an event</li>
+          <li><code>emit Transferred(msg.sender, to, amount);</code> - 觸發事件 / Emit event</li>
+          <li><code>receive() external payable { ... }</code> - 接收 ETH（無 calldata）/ Fallback ETH receiver</li>
+          <li><code>fallback() external { ... }</code> - 回退函式（未知 function 呼叫）/ Fallback handler</li>
+          <li><code>constructor(uint init) { count = init; }</code> - 有參數建構子 / Constructor with arguments</li>
+          <li><code>function internalLogic() internal returns (...) { ... }</code> - 僅限內部使用的函式 / Internal function</li>
+          <li><code>function callExternal(address target) public { target.call(...); }</code> - 呼叫其他合約 / External call
+          </li>
+          <li><code>delete balances[msg.sender];</code> - 刪除映射值 / Delete mapping entry</li>
+          <li><code>address payable wallet;</code> - 可接收 ETH 的地址 / Payable address</li>
+          <li><code>wallet.transfer(1 ether);</code> - 傳送 ETH / Transfer ETH</li>
+          <li><code>block.timestamp</code> - 區塊時間戳 / Block timestamp</li>
+          <li><code>block.number</code> - 區塊編號 / Block number</li>
+          <li><code>abi.encode(...)</code> / <code>abi.decode(...)</code> - ABI 編碼與解碼 / ABI encoding/decoding</li>
+          <li><code>keccak256(abi.encodePacked(...))</code> - 雜湊運算 / Hash function</li>
+          <li><code>bytes memory data;</code> - 動態位元組資料 / Dynamic byte array</li>
+          <li><code>type(MyContract).creationCode</code> - 合約建構碼 / Get bytecode</li>
+          <li><code>assert(msg.sender != address(0));</code> - 防呆保護 / Sanity check</li>
+        </ul>
+      </details>
+
+
+      <details open>
+        <summary id="advanced-syntax-title"> 進階語法 / Advanced Syntax</summary>
+        <ul id="advanced-syntax-list">
+          <li><code>interface IERC20 { function transfer(...) external returns (bool); }</code> - 介面定義 / Interface
+            definition</li>
+          <li><code>abstract contract Ownable { ... }</code> - 抽象合約 / Abstract contract</li>
+          <li><code>virtual override</code> / <code>super</code> - 函式覆寫與繼承呼叫 / Override & inheritance</li>
+          <li><code>try externalFunc() catch { ... }</code> - 例外處理 / Try-catch error handling</li>
+          <li><code>assembly { ... }</code> - 內聯彙編 / Inline assembly (Yul)</li>
+          <li><code>delegatecall</code> - 委派執行 / Delegate external contract logic</li>
+          <li><code>selfdestruct(payable(to));</code> - 銷毀合約 / Destroy contract & send ETH</li>
+          <li><code>enum Status { Pending, Approved, Rejected }</code> - 列舉型態 / Enum declaration</li>
+          <li><code>struct Proposal { uint id; string name; }</code> - 結構型態 / Struct definition</li>
+          <li><code>storage</code> vs <code>memory</code> vs <code>calldata</code> - 資料位置關鍵字 / Data location</li>
+          <li><code>constructor() payable { ... }</code> - 可接收 ETH 的建構子 / Payable constructor</li>
+          <li><code>receive() external payable</code> - 專屬 ETH 接收器 / ETH receive handler</li>
+          <li><code>fallback() external { ... }</code> - 無函式匹配時執行 / Fallback function</li>
+          <li><code>type(MyContract).interfaceId</code> - 取得介面 ID / Interface identifier</li>
+          <li><code>contract Factory { function create() public returns (address); }</code> - 工廠合約 / Factory pattern
+          </li>
+          <li><code>mapping(address => mapping(uint => bool))</code> - 巢狀映射 / Nested mapping</li>
+          <li><code>function() external</code> - 動態函式指標 / Function type variables</li>
+          <li><code>constant</code> / <code>immutable</code> - 編譯時 / 初始化後常數 / Constants</li>
+          <li><code>require(x > 0, "Must be > 0");</code> / <code>assert(x != 0);</code> - 防錯處理 / Preconditions</li>
+          <li><code>revert("Reason");</code> - 顯式終止 / Abort with reason</li>
+          <li><code>address(this).balance</code> - 合約 ETH 餘額 / Contract’s ETH balance</li>
+        </ul>
+      </details>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>由徐文志製作 | Hsu Wen-Chih © 2025</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
