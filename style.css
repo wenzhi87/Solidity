@@ -217,3 +217,58 @@ footer {
 .tooltip.show {
   opacity: 1;
 }
+.start-simulator-section {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #f0f9ff;
+  border: 2px dashed #00bcd4;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.start-sim-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #00bcd4;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.start-sim-btn:hover {
+  background-color: #0097a7;
+}
+.what-is-contract {
+  background-color: #fff9f0;
+  border-left: 6px solid #ff9800;
+  padding: 1.5rem 2rem;
+  margin-top: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.what-is-contract h2,
+.what-is-contract h3 {
+  color: #ff9800;
+  margin-top: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.what-is-contract p,
+.what-is-contract ul {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.what-is-contract ul {
+  padding-left: 1.5rem;
+}
+
+.what-is-contract li {
+  margin-bottom: 0.4rem;
+}
