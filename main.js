@@ -4,27 +4,27 @@
 const tutorialSteps = [
   {
     selector: "#contractEditor",
-    message: "【步驟 1】請在這裡撰寫或貼上你的 Solidity 合約程式碼。"
+    message: "【步驟 1】請在這裡撰寫或貼上你的 Solidity 合約程式碼。",
   },
   {
     selector: "button[onclick='compileContract()']",
-    message: "【步驟 2】點擊這裡開始編譯你的合約，檢查語法是否正確。"
+    message: "【步驟 2】點擊這裡開始編譯你的合約，檢查語法是否正確。",
   },
   {
     selector: "button[onclick='deployContract()']",
-    message: "【步驟 3】點擊這裡部署合約（模擬部署，實際不會上鏈）。"
+    message: "【步驟 3】點擊這裡部署合約（模擬部署，實際不會上鏈）。",
   },
   {
     selector: "#inputMessage",
-    message: "【步驟 4】輸入訊息，作為 setMessage() 的參數。"
+    message: "【步驟 4】輸入訊息，作為 setMessage() 的參數。",
   },
   {
     selector: "button[onclick='callSetFunction()']",
-    message: "【步驟 5】呼叫合約函式，模擬更新 message 狀態。"
+    message: "【步驟 5】呼叫合約函式，模擬更新 message 狀態。",
   },
   {
     selector: "#logBox",
-    message: "【步驟 6】觀察執行日誌，查看模擬結果。"
+    message: "【步驟 6】觀察執行日誌，查看模擬結果。",
   }
 ];
 
@@ -76,24 +76,29 @@ function logMessage(msg) {
   log.scrollTop = log.scrollHeight;
 }
 
+// 以下為合約模擬相關函式
 function compileContract() {
   const code = document.getElementById("contractEditor").value;
-  logMessage("🔍 編譯完成（模擬），無錯誤。\n---\n" + code.slice(0, 100) + "...");
+  if (code.includes("contract") && code.includes("setMessage")) {
+    logMessage("✅ 合約語法檢查通過。");
+  } else {
+    logMessage("❌ 合約格式錯誤，請檢查語法與函式。範例需含 setMessage。");
+  }
 }
 
 function deployContract() {
-  logMessage("🚀 合約已成功模擬部署。");
+  logMessage("🚀 合約已部署成功（模擬）。");
 }
 
 function callSetFunction() {
-  const input = document.getElementById("inputMessage").value;
-  if (input.trim()) {
-    logMessage(`📝 setMessage('${input}') 被呼叫（模擬）`);
+  const msg = document.getElementById("inputMessage").value.trim();
+  if (msg) {
+    logMessage(`📝 呼叫 setMessage("${msg}") 成功（模擬）。`);
   } else {
-    logMessage("⚠️ 請先輸入訊息再執行 setMessage()。");
+    logMessage("⚠️ 請先輸入訊息再呼叫 setMessage()。");
   }
 }
 
 function explainValidation() {
-  logMessage("📘 區塊鏈驗證模擬說明：交易需經節點共識與 GAS 費用計算，本模擬器僅呈現邏輯流程，不連接真實區塊鏈。");
+  logMessage("📘 區塊鏈驗證：每筆交易需經礦工驗證與共識機制確認後才可上鏈。");
 }
