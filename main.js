@@ -1,6 +1,12 @@
 // main.js
 
 // 教學步驟資料
+window.startTutorial = startTutorial;
+window.showNextStep = showNextStep;
+window.compileContract = compileContract;
+window.deployContract = deployContract;
+window.callSetFunction = callSetFunction;
+window.explainValidation = explainValidation;
 const tutorialSteps = [
   {
     selector: "#contractEditor",
