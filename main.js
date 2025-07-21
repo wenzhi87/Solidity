@@ -174,3 +174,47 @@ function showStep1Guide() {
   tooltip.style.top = `${window.scrollY + rect.top - 50}px`;
   tooltip.style.left = `${window.scrollX + rect.left}px`;
 }
+let currentStep = 0;
+let tutorialSteps = [
+  {
+    selector: "#contractEditor",
+    message: "第一步：請在這裡撰寫或貼上你的 Solidity 合約程式碼。",
+  },
+  // 你可以依照需要添加更多步驟
+];
+
+function startTutorial() {
+  currentStep = 0;
+  showTutorialStep(currentStep);
+}
+
+function showNextStep() {
+  removeTutorialHighlights();
+  currentStep++;
+  if (currentStep < tutorialSteps.length) {
+    showTutorialStep(currentStep);
+  }
+}
+
+function showTutorialStep(stepIndex) {
+  const step = tutorialSteps[stepIndex];
+  const targetElement = document.querySelector(step.selector);
+
+  if (targetElement) {
+    targetElement.classList.add("tutorial-highlight");
+
+    const tooltip = document.createElement("div");
+    tooltip.className = "tutorial-tooltip";
+    tooltip.textContent = step.message;
+
+    const rect = targetElement.getBoundingClientRect();
+    tooltip.style.top = `${window.scrollY + rect.top - 60}px`;
+    tooltip.style.left = `${rect.left + 10}px`;
+    document.body.appendChild(tooltip);
+  }
+}
+
+function removeTutorialHighlights() {
+  document.querySelectorAll(".tutorial-highlight").forEach(el => el.classList.remove("tutorial-highlight"));
+  document.querySelectorAll(".tutorial-tooltip").forEach(el => el.remove());
+}
