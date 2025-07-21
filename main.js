@@ -110,3 +110,19 @@ function callSetFunction() {
 function explainValidation() {
   logMessage("📘 區塊鏈驗證：每筆交易需經礦工驗證與共識機制確認後才可上鏈。");
 }
+// 🔒 鎖定右鍵與 F12 等開發者工具
+document.addEventListener("contextmenu", function (e) {
+  e.preventDefault();
+  alert("⚠️ 禁止右鍵檢查，請尊重原創程式碼！");
+});
+
+document.addEventListener("keydown", function (e) {
+  if (
+    e.key === "F12" ||
+    (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) ||
+    (e.ctrlKey && e.key === "U")
+  ) {
+    e.preventDefault();
+    alert("⚠️ 開發者工具已鎖定！");
+  }
+});
