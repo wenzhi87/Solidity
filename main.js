@@ -160,3 +160,17 @@ function showTooltip(element, message) {
   window.switchLanguage=(lang)=>{tutorialStep=0,showNextStep(),logBox&&(document.getElementById("validation-explain-btn").textContent="zh"===lang?"📘 區塊鏈驗證詳解":"📘 Explain Blockchain Validation")};
   window.searchKeyword=l;
 })();
+function showStep1Guide() {
+  const editor = document.getElementById('contractEditor');
+  editor.classList.add('tutorial-highlight');
+
+  const tooltip = document.createElement('div');
+  tooltip.className = 'tutorial-tooltip';
+  tooltip.innerText = '【步驟 1】請先編輯或確認智能合約內容。您可以從範例合約開始修改。';
+
+  document.body.appendChild(tooltip);
+
+  const rect = editor.getBoundingClientRect();
+  tooltip.style.top = `${window.scrollY + rect.top - 50}px`;
+  tooltip.style.left = `${window.scrollX + rect.left}px`;
+}
