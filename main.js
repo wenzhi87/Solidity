@@ -7,6 +7,8 @@ window.compileContract = compileContract;
 window.deployContract = deployContract;
 window.callSetFunction = callSetFunction;
 window.explainValidation = explainValidation;
+window.startTutorial = startTutorial;
+window.showNextStep = showNextStep;
 const tutorialSteps = [
   {
     selector: "#contractEditor",
