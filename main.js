@@ -131,23 +131,7 @@ button:hover {
   margin-top: 10px;
 }
 
-/* 教學流程提示組件步驟定位支援 */
-.step-indicator {
-  display: inline-block;
-  margin: 4px 8px;
-  background-color: #eee;
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 13px;
-  color: #555;
-  cursor: default;
-}
-
-.step-indicator.active {
-  background-color: #ff9800;
-  color: white;
-  font-weight: bold;
-}
+// 教學步驟定義
 let tutorialSteps = [
   {
     selector: "#contractEditor",
@@ -196,20 +180,14 @@ function showTutorialStep(stepIndex) {
   const step = tutorialSteps[stepIndex];
   const el = document.querySelector(step.selector);
   if (!el) return;
-
-  // 高亮提示
   el.classList.add("tutorial-highlight");
-
-  // 建立提示框
   const tip = document.createElement("div");
   tip.className = "tutorial-tooltip";
   tip.innerText = step.message;
   document.body.appendChild(tip);
-
   const rect = el.getBoundingClientRect();
   tip.style.top = `${window.scrollY + rect.top - 50}px`;
   tip.style.left = `${window.scrollX + rect.left}px`;
-
   logMessage(`📘 ${step.message}`);
 }
 
@@ -223,4 +201,30 @@ function logMessage(msg) {
   const time = new Date().toLocaleTimeString();
   log.innerText += `\n[${time}] ${msg}`;
   log.scrollTop = log.scrollHeight;
+}
+
+function compileContract() {
+  const code = document.getElementById("contractEditor").value;
+  if (!code.includes("contract")) {
+    logMessage("❌ 合約中缺少 contract 宣告，請確認語法。");
+    return;
+  }
+  logMessage("✅ 編譯成功！(模擬)");
+}
+
+function deployContract() {
+  logMessage("🚀 合約已部署！（模擬部署）");
+}
+
+function callSetFunction() {
+  const message = document.getElementById("inputMessage").value;
+  if (!message) {
+    logMessage("⚠️ 請先輸入訊息！");
+    return;
+  }
+  logMessage(`📝 setMessage("${message}") 已呼叫，模擬更新完成。`);
+}
+
+function explainValidation() {
+  logMessage("🔎 區塊鏈驗證是透過節點共識確認交易有效性並寫入區塊，保證資料不可竄改。");
 }
